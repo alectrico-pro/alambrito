@@ -15,7 +15,7 @@ let chatHistory = [
 	{
 		role: "assistant",
 		content:
-			"Hola, soy Alan~Brito. Responde solo preguntas sobre instalaciones eléctricas residenciales chilenas que deben complir con los pliegos normativos SEC.",
+			"Hola, soy Alam~Brito. Responde solo preguntas sobre instalaciones eléctricas residenciales chilenas que deben complir con los pliegos normativos SEC Norma 4 de 2021.",
 	},
 ];
 let isProcessing = false;
