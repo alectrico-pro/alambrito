@@ -37,7 +37,16 @@ export default {
 		}
 
 		// API Routes
-		if (url.pathname === "/api/chat") {
+
+                if (url.pathname === "/api/alambrito") {
+                        // Handle POST requests for chat
+                        if (request.method === "POST") {
+                                return handleChatRequest(request, env);
+                        }
+
+                        // Method not allowed for other request types
+                        return new Response("Method not allowed", { status: 405 });
+                } else  if (url.pathname === "/api/chat") {
 			// Handle POST requests for chat
 			if (request.method === "POST") {
 				return handleChatRequest(request, env);
