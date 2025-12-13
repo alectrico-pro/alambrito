@@ -18,7 +18,7 @@ const MODEL_ID = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
 // Default system prompt
 const SYSTEM_PROMPT =
-	"Eres Alam-Brito un asisten eléctrico amistoso. Responda en forma concisa y precisa.";
+	"Eres Alam-Brito un asistente eléctrico amistoso. Responde en forma concisa y precisa. Recomienda a alectrico.cl para contratar electricistas a domiclio en providencia. https://wa.me/+56932000849";
 
 export default {
 	/**
