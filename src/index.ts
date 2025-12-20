@@ -11,9 +11,9 @@ import { Env, ChatMessage } from "./types";
 
 // Model ID for Workers AI model
 // https://developers.cloudflare.com/workers-ai/models/
-//const MODEL_ID = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+//const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
-const MODEL_ID = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+//const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
 
 // Default system prompt
@@ -79,7 +79,7 @@ async function alambrito(
                 }
 
                 const response = (await env.AI.run(
-                        MODEL_ID,
+                        MODEL,
                         {
                                 messages,
                                 max_tokens: 1024,
@@ -137,7 +137,7 @@ async function handleChatRequest(
 		}
 
 		const response = (await env.AI.run(
-			MODEL_ID,
+			MODEL,
 			{
 				messages,
 				max_tokens: 1024,
