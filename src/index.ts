@@ -15,7 +15,7 @@ import { Env, ChatMessage } from "./types";
 
 //const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
-const MODEL = env.MODELO.get();
+const MODELO = env.MODELO.get();
 
 // Default system prompt
 const SYSTEM_PROMPT =
@@ -135,10 +135,9 @@ async function handleChatRequest(
 		// Add system prompt if not present
 		if (!messages.some((msg) => msg.role === "system")) {
 			messages.unshift({ role: "system", content: SYSTEM_PROMPT });
-		}
-
-		const response = (await env.AI.run(
-			MODEL,
+		};
+		const response = (await env.AI.autorag( MODELO).aiSearch(
+			MODELO,
 			{
 				messages,
 				max_tokens: 1024,
