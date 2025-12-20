@@ -15,7 +15,6 @@ import { Env, ChatMessage } from "./types";
 
 //const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
-const MODELO = env.MODELO.get();
 
 // Default system prompt
 const SYSTEM_PROMPT =
@@ -30,6 +29,8 @@ export default {
 		env: Env,
 		ctx: ExecutionContext,
 	): Promise<Response> {
+
+                const MODELO = env.MODELO.get();
 		const url = new URL(request.url);
 
 		// Handle static assets (frontend)
