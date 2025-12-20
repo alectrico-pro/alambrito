@@ -15,6 +15,7 @@ import { Env, ChatMessage } from "./types";
 
 //const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
+const MODEL = env.MODELO.get();
 
 // Default system prompt
 const SYSTEM_PROMPT =
