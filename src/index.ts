@@ -79,9 +79,9 @@ async function alambrito(
                 if (!messages.some((msg) => msg.role === "system")) {
                         messages.unshift({ role: "system", content: SYSTEM_PROMPT });
                 }
-                const MODELO = env.AUTORAG.get();
+                //const MODELO = env.AUTORAG.get();
  
-                console.error(MODELO);
+                //console.error(MODELO);
 
                 const response = (await env.AI.autorag( "solitary-night-02b5" ).aiSearch(
                         MODELO,
