@@ -98,11 +98,11 @@ async function alambrito(
                      model: "@cf/baai/bge-reranker-base"
                    },
                    stream: true,
-                   }) as unknown as Response;
-
+                   }) ;
                 // Return streaming response
-                console.log(answer.response);
-                return answer.response;
+                console.log(answer);
+                return new Response( response, { status: 200 });
+
 
 
   } catch (error) {
