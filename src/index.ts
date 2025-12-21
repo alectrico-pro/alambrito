@@ -70,6 +70,7 @@ async function alambrito(
 ): Promise<Response> {
   try {
                 // Parse JSON request body
+                console.log("En alambrito");
                 const { messages = [] } = (await request.json()) as {
                         messages: ChatMessage[];
                 };
@@ -79,8 +80,10 @@ async function alambrito(
                         messages.unshift({ role: "system", content: SYSTEM_PROMPT });
                 }
                 const MODELO = env.AUTORAG.get();
+ 
+                console.error(MODELO);
 
-                const response = (await env.AI.autorag( MODELO).aiSearch(
+                const response = (await env.AI.autorag( "solitary-night-02b5" ).aiSearch(
                         MODELO,
                         {
                                 messages,
