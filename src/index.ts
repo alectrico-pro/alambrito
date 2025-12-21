@@ -79,6 +79,8 @@ async function alambrito(
                 if (!messages.some((msg) => msg.role === "system")) {
                         messages.unshift({ role: "system", content: SYSTEM_PROMPT });
                 }
+                const MODELO = env.MODELO.get();
+
                 const response = (await env.AI.autorag( MODELO).aiSearch(
                         MODELO,
                         {
