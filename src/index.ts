@@ -84,7 +84,7 @@ async function alambrito(
                 //console.error(MODELO);
 
                 const response = (await env.AI.autorag( "solitary-night-02b5" ).aiSearch(
-                        MODELO,
+                        "solitary-night-02b5",
                         {
                                 messages,
                                 max_tokens: 1024,
