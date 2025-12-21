@@ -101,6 +101,7 @@ async function alambrito(
                    }) as unknown as Response;
 
                 // Return streaming response
+                console.log(answer.response);
                 return answer.response;
 
 
