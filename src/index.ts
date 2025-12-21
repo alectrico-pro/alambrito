@@ -83,25 +83,22 @@ async function alambrito(
  
                 //console.error(MODELO);
 
-                 //modelo = await env.MODELO.get('NX_MODELO_RAG')
+                //modelo = await env.MODELO.get('NX_MODELO_RAG')
 
-                const response = (await env.AI.autorag( "solitary-night-02b5" ).aiSearch(
-                        "@cf/meta/llama-3.3-8b-instruct-fp8",
-                        {
-                                messages,
-                                max_tokens: 1024,
-                        },
-                        // @ts-expect-error tags is no longer required
-                        {
-                                returnRawResponse: true,
-                                // Uncomment to use AI Gateway
-                                 gateway: {
-                                   id: "gato", // Replace with your AI Gateway ID
-                                   skipCache: false,      // Set to true to bypass cache
-                                   cacheTtl: 3600,        // Cache time-to-live in seconds
-                                 },
-                        },
-                )) as unknown as Response;
+                const response = await env.AI.autorag("solitary-night-02b5").aiSearch({
+                   query: "How do I train a llama to deliver coffee?",
+                   model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                   rewrite_query: true,
+                   max_num_results: 2,
+                   ranking_options: {
+                     score_threshold: 0.3
+                   },
+                   reranking: {
+                     enabled: true,
+                     model: "@cf/baai/bge-reranker-base"
+                   },
+                   stream: true,
+                   }) as unknown as Response;
 
                 // Return streaming response
                 return response;
