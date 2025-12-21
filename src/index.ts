@@ -86,7 +86,7 @@ async function alambrito(
                  modelo = await env.MODELO.get('NX_MODELO_RAG')
 
                 const response = (await env.AI.autorag( "solitary-night-02b5" ).aiSearch(
-                        modelo,
+                        "@cf/meta/llama-3.3-8b-instruct-fp8",
                         {
                                 messages,
                                 max_tokens: 1024,
