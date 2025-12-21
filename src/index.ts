@@ -83,7 +83,7 @@ async function alambrito(
  
                 //console.error(MODELO);
 
-                 modelo = await env.MODELO.get('NX_MODELO_RAG')
+                 //modelo = await env.MODELO.get('NX_MODELO_RAG')
 
                 const response = (await env.AI.autorag( "solitary-night-02b5" ).aiSearch(
                         "@cf/meta/llama-3.3-8b-instruct-fp8",
