@@ -83,8 +83,10 @@ async function alambrito(
  
                 //console.error(MODELO);
 
+                 modelo = await env.MODELO.get('NX_MODELO_RAG')
+
                 const response = (await env.AI.autorag( "solitary-night-02b5" ).aiSearch(
-                        "solitary-night-02b5",
+                        modelo,
                         {
                                 messages,
                                 max_tokens: 1024,
