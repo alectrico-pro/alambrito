@@ -85,7 +85,7 @@ async function alambrito(
 
                 //modelo = await env.MODELO.get('NX_MODELO_RAG')
 
-                const response = await env.AI.autorag("solitary-night-02b5").aiSearch({
+                const answer = await env.AI.autorag("solitary-night-02b5").aiSearch({
                    query: "How do I train a llama to deliver coffee?",
                    model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
                    rewrite_query: true,
@@ -101,7 +101,7 @@ async function alambrito(
                    }) as unknown as Response;
 
                 // Return streaming response
-                return response;
+                return answer.response;
 
 
   } catch (error) {
