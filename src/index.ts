@@ -30,7 +30,6 @@ export default {
 		ctx: ExecutionContext,
 	): Promise<Response> {
 
-                const MODELO = env.MODELO.get();
 		const url = new URL(request.url);
 
 		// Handle static assets (frontend)
@@ -43,7 +42,7 @@ export default {
                 if (url.pathname === "/api/alambrito") {
                         // Handle POST requests for chat
                         if (request.method === "POST") {
-                                return handleChatRequest(request, env);
+                                return alambrito(request, env);
                         }
 
                         // Method not allowed for other request types
@@ -51,7 +50,7 @@ export default {
                 } else  if (url.pathname === "/api/chat") {
 			// Handle POST requests for chat
 			if (request.method === "POST") {
-				return handleChatRequest(request, env);
+				return alambrito(request, env);
 			}
 
 			// Method not allowed for other request types
@@ -79,7 +78,7 @@ async function alambrito(
                 if (!messages.some((msg) => msg.role === "system")) {
                         messages.unshift({ role: "system", content: SYSTEM_PROMPT });
                 }
-                const MODELO = env.MODELO.get();
+                const MODELO = env.AUTORAG.get();
 
                 const response = (await env.AI.autorag( MODELO).aiSearch(
                         MODELO,
@@ -91,11 +90,11 @@ async function alambrito(
                         {
                                 returnRawResponse: true,
                                 // Uncomment to use AI Gateway
-                                // gateway: {
-                                //   id: "YOUR_GATEWAY_ID", // Replace with your AI Gateway ID
-                                //   skipCache: false,      // Set to true to bypass cache
-                                //   cacheTtl: 3600,        // Cache time-to-live in seconds
-                                // },
+                                 gateway: {
+                                   id: "gato", // Replace with your AI Gateway ID
+                                   skipCache: false,      // Set to true to bypass cache
+                                   cacheTtl: 3600,        // Cache time-to-live in seconds
+                                 },
                         },
                 )) as unknown as Response;
 
@@ -120,7 +119,7 @@ async function alambrito(
 
 
 
-
+/*Ya no se usa, está siendo reemplazado por alambrito, que usa autorag*/
 /**
  * Handles chat API requests
  */
