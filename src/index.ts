@@ -97,7 +97,7 @@ async function alambrito(
                      enabled: true,
                      model: "@cf/baai/bge-reranker-base"
                    },
-                   stream: true,
+                   stream: false,
                    }) as unknown as Response;
 
                 // Return streaming response
