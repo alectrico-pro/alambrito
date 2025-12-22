@@ -73,10 +73,8 @@ async function alambrito(
   try {
                 // Parse JSON request body
                 console.log("En alambrito");
-                json = await request.json();
-                console.log(json)
-
-                const { messages = [] } = r as {
+                // Parse JSON request body
+                const { messages = [] } = (await request.json()) as {
                         messages: ChatMessage[];
                 };
 
