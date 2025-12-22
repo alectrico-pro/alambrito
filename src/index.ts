@@ -93,7 +93,7 @@ async function alambrito(
                    }) ;
                 // Return streaming response
                 console.log(answer.response);
-                return new Response( answer.response, { status: 200 });
+                return new Response({"response": answer.response}, { status: 200 });
 
 
 
