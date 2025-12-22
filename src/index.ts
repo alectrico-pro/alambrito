@@ -73,7 +73,8 @@ async function alambrito(
   try {
                 // Parse JSON request body
                 console.log("En alambrito");
-                const { messages = [] } = (await request.json()) as {
+                query = await request.json();
+                const { messages = [] } = r as {
                         messages: ChatMessage[];
                 };
 
@@ -88,18 +89,7 @@ async function alambrito(
                 //modelo = await env.MODELO.get('NX_MODELO_RAG')
 
                 const answer = await env.AI.autorag("square-cloud-8e93").aiSearch({
-                   query: messages,
-                   model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-                   rewrite_query: true,
-                   max_num_results: 2,
-                   ranking_options: {
-                     score_threshold: 0.3
-                   },
-                   reranking: {
-                     enabled: true,
-                     model: "@cf/baai/bge-reranker-base"
-                   },
-                   stream: true,
+                   query: query,
                    }) ;
                 // Return streaming response
                 console.log(answer.response);
