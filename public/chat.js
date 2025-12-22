@@ -99,7 +99,6 @@ async function sendMessage() {
 
 		while (true) {
 			const { done, value } = await reader.read();
-                        console.log(`Received chunk of ${value.length} bytes`);
 			if (done) {
 				break;
 			}
@@ -113,9 +112,11 @@ async function sendMessage() {
 				try {
                                         console.log(`line ${line}`);
 					const jsonData = JSON.parse(line);
+                                        console.log( jsonData );
 					if (jsonData.response) {
 						// Append new content to existing text
 						responseText += jsonData.response;
+                                                console.log( responseText );
 						assistantMessageEl.querySelector("p").textContent = responseText;
 
 						// Scroll to bottom
