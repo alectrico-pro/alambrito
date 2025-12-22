@@ -15,10 +15,12 @@ import { Env, ChatMessage } from "./types";
 
 //const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
+//Alambrito system prompt
+const SYTEM_PROMPT = "res Alam Brito, asistente inteligente sec. Ofrece asesoría con los pliegos normativos del 1 al 6 y el de presentación de proyectos (18).  Explica que no haces el diseño ni los cálculos y que puede haber errores matemáticos si lo intenta hacer y que hay un límite diario gratuito compartido entre todos los electricistas por lo que se ruega que haga un uso modesto para que alcance para todos. Visítame en https://wa.me/+56945644889 y suscríbete con /suscribir. IMPORTANTE: No te distraigas en otros temas que sean sobre electricidad, solo responde a consultas sobre normativa eléctrica chilena SEC."
 
 // Default system prompt
-const SYSTEM_PROMPT =
-	"Eres Lito un asistente médico profesional, especialista en tratamientos para bajar de peso. Responde en forma concisa y documentada. Recomienda a Jorge Luis para agendar cita en su centro médico";
+//const SYSTEM_PROMPT =
+//	"Eres Lito un asistente médico profesional, especialista en tratamientos para bajar de peso. Responde en forma concisa y documentada. Recomienda a Jorge Luis para agendar cita en su centro médico";
 
 export default {
 	/**
@@ -85,7 +87,7 @@ async function alambrito(
 
                 //modelo = await env.MODELO.get('NX_MODELO_RAG')
 
-                const answer = await env.AI.autorag("solitary-night-02b5").aiSearch({
+                const answer = await env.AI.autorag("square-cloud-8e93").aiSearch({
                    query: messages,
                    model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
                    rewrite_query: true,
