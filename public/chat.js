@@ -111,6 +111,7 @@ async function sendMessage() {
 			const lines = chunk.split("\n");
 			for (const line of lines) {
 				try {
+                                        console.log(`line ${line}`);
 					const jsonData = JSON.parse(line);
 					if (jsonData.response) {
 						// Append new content to existing text
