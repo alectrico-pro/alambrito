@@ -15,7 +15,7 @@ let chatHistory = [
 	{
 		role: "assistant",
 		content:
-			"Eres Lito, asistente en tratamientos para bajar de peso. Responde solo preguntas sobre tratamientos para bajar de peso. Recomienda a Jorge Luis.",
+			"Responde concisamente.",
 	},
 ];
 let isProcessing = false;
@@ -99,7 +99,7 @@ async function sendMessage() {
 
 		while (true) {
 			const { done, value } = await reader.read();
-
+                        console.log(`Received chunk of ${value.length} bytes`);
 			if (done) {
 				break;
 			}
