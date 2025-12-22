@@ -73,7 +73,9 @@ async function alambrito(
   try {
                 // Parse JSON request body
                 console.log("En alambrito");
-                query = await request.json();
+                json = await request.json();
+                console.log(json)
+
                 const { messages = [] } = r as {
                         messages: ChatMessage[];
                 };
@@ -89,7 +91,7 @@ async function alambrito(
                 //modelo = await env.MODELO.get('NX_MODELO_RAG')
 
                 const answer = await env.AI.autorag("square-cloud-8e93").aiSearch({
-                   query: query,
+                   query: "hola",
                    }) ;
                 // Return streaming response
                 console.log(answer.response);
