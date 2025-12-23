@@ -78,17 +78,20 @@ async function alambrito(
                         messages: ChatMessage[];
                 };
                 const ultimo = messages[messages.length -1 ];
-                console.log( ultimo);
                 // Add system prompt if not present
-                if (!messages.some((msg) => msg.role === "system")) {
-                        messages.unshift({ role: "system", content: SYSTEM_PROMPT });
-                }
+                //if (!messages.some((msg) => msg.role === "system")) {
+                //        messages.unshift({ role: "system", content: SYSTEM_PROMPT });
+                // }
                 //const MODELO = env.AUTORAG.get();
  
                 //console.error(MODELO);
 
                 //modelo = await env.MODELO.get('NX_MODELO_RAG')
 
+                //Esto es una adaptación para autorag, antes usaba AI.run
+                //Autorag no usa historial ni tools
+                //tampoco necestiva el modelo de ChatMessage con rol y content
+                //Para no alargar mucho este desarrollo lo he dejado así
                 const answer = await env.AI.autorag("square-cloud-8e93").aiSearch({
                    query: ultimo.content  ,
                    }) ;
@@ -118,58 +121,3 @@ async function alambrito(
   }
 }
 
-
-
-
-/*Ya no se usa, está siendo reemplazado por alambrito, que usa autorag*/
-/**
- * Handles chat API requests
- */
-async function handleChatRequest(
-	request: Request,
-	env: Env,
-): Promise<Response> {
-	try {
-		// Parse JSON request body
-		const { messages = [] } = (await request.json()) as {
-			messages: ChatMessage[];
-		};
-
-		// Add system prompt if not present
-		if (!messages.some((msg) => msg.role === "system")) {
-			messages.unshift({ role: "system", content: SYSTEM_PROMPT });
-		};
-                const MODELO = env.MODELO.get();
-
-		const response = (await env.AI.autorag( MODELO).aiSearch(
-
-			MODELO,
-			{
-				messages,
-				max_tokens: 1024,
-			},
-			// @ts-expect-error tags is no longer required
-			{
-				returnRawResponse: true,
-				// Uncomment to use AI Gateway
-				gateway: {
-				   id: "gato", // Replace with your AI Gateway ID
-				   skipCache: false,      // Set to true to bypass cache
-				   cacheTtl: 3600,        // Cache time-to-live in seconds
-				},
-			},
-		)) as unknown as Response;
-
-		// Return streaming response
-		return response;
-	} catch (error) {
-		console.error("Error processing chat request:", error);
-		return new Response(
-			JSON.stringify({ error: "Failed to process request" }),
-			{
-				status: 500,
-				headers: { "content-type": "application/json" },
-			},
-		);
-	}
-}
