@@ -53,7 +53,7 @@ async function sendMessage() {
 
 	// Add user message to chat
 	addMessageToChat("user", message);
-
+        
 	// Clear input
 	userInput.value = "";
 	userInput.style.height = "auto";
@@ -114,9 +114,10 @@ async function sendMessage() {
 					if (jsonData.response) {
 						// Append new content to existing text
 						responseText += jsonData.response;
-                                                console.log( responseText );
 
-						assistantMessageEl.querySelector("p").textContent = responseText;
+						//assistantMessageEl.querySelector("p").textContent = responseText;
+
+                                                assistantMessageEl.innerHTML = toMarkdown( responseText);
 
 						// Scroll to bottom
 						chatMessages.scrollTop = chatMessages.scrollHeight;
