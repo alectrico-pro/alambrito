@@ -89,7 +89,7 @@ async function alambrito(
                 //modelo = await env.MODELO.get('NX_MODELO_RAG')
 
                 const answer = await env.AI.autorag("square-cloud-8e93").aiSearch({
-                   query:   ,
+                   query: messages.last.content  ,
                    }) ;
                 // Return streaming response
                 console.log(answer.response);
