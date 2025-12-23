@@ -117,7 +117,7 @@ async function sendMessage() {
 
 						//assistantMessageEl.querySelector("p").textContent = responseText;
 
-                                                assistantMessageEl.innerHTML = toMarkdown( responseText);
+                                                //assistantMessageEl.innerHTML = toMarkdown( responseText);
 
 						// Scroll to bottom
 						chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -130,6 +130,7 @@ async function sendMessage() {
 
 		// Add completed response to chat history
 		chatHistory.push({ role: "assistant", content: responseText });
+                assistantMessageEl.innerHTML = toMarkdown( responseText);
                 toMarkdown( responseText );
 	} catch (error) {
 		console.error("Error:", error);
