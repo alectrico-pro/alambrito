@@ -8,7 +8,6 @@
  * @license MIT
  */
 import { Env, ChatMessage } from "./types";
-import { marked } from 'marked';
 
 // Model ID for Workers AI model
 // https://developers.cloudflare.com/workers-ai/models/
@@ -126,10 +125,9 @@ async function alambrito(
                    }) ;
                 // Return streaming response
                 console.log(answer.response);
-                respuesta = marked.parse( answer.response )
                  
                 return new Response(
-                        JSON.stringify({ response: respuesta }),
+                        JSON.stringify({ response: answer.response }),
                         {
                                 status: 200,
                                 headers: { "content-type": "application/json" },
