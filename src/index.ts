@@ -77,7 +77,7 @@ async function alambrito(
                 const { messages = [] } = (await request.json()) as {
                         messages: ChatMessage[];
                 };
-                ultimo = messages[messages.length -1 ];
+                const ultimo = messages[messages.length -1 ];
                 console.log( ultimo);
                 // Add system prompt if not present
                 if (!messages.some((msg) => msg.role === "system")) {
@@ -90,7 +90,7 @@ async function alambrito(
                 //modelo = await env.MODELO.get('NX_MODELO_RAG')
 
                 const answer = await env.AI.autorag("square-cloud-8e93").aiSearch({
-                   query: ultimo  ,
+                   query: ultimo.content  ,
                    }) ;
                 // Return streaming response
                 console.log(answer.response);
