@@ -130,7 +130,7 @@ async function sendMessage() {
 
 		// Add completed response to chat history
 		chatHistory.push({ role: "assistant", content: responseText });
-                assistantMessageEl.innerHTML = toMarkdown( responseText);
+                assistantMessageEl.innerHTML = converter.makeHtml( responseText);
                 toMarkdown( responseText );
 	} catch (error) {
 		console.error("Error:", error);
