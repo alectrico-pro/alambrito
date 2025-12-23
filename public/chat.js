@@ -132,7 +132,6 @@ async function sendMessage() {
 		// Add completed response to chat history
 		chatHistory.push({ role: "assistant", content: responseText });
                 assistantMessageEl.innerHTML = converter.makeHtml( responseText);
-                toMarkdown( responseText );
 	} catch (error) {
 		console.error("Error:", error);
 		addMessageToChat(
@@ -164,16 +163,3 @@ function addMessageToChat(role, content) {
 	chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-
-      // Function to convert Markdown to HTML and display it
-function toMarkdown( responseText ) {
-            // 1. Get the Markdown source from the textarea
-
-            // 2. Use a JavaScript library to convert Markdown to HTML
-            // This example uses the Showdown library
-            const converter = new showdown.Converter();
-            const htmlOutput = converter.makeHtml( responseText) ;
-
-            // 3. Display the resulting HTML in the preview div
-            document.getElementById('markdown').innerHTML = htmlOutput;
-}
