@@ -4,6 +4,8 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Alam~Brito</title>
+                <!-- This example uses Showdown.js from a CDN -->
+                <script src="cdn.jsdelivr.net"></script>
 		<style>
 			:root {
 				--primary-color: #f6821f;
@@ -61,6 +63,16 @@
 				padding: 1rem;
 				background-color: var(--light-bg);
 			}
+
+
+
+                        .markdown {
+                                flex: 1;
+                                overflow-y: auto;
+                                padding: 1rem;
+                                background-color: var(--light-bg);
+                        }
+
 
 			.message {
 				margin-bottom: 1rem;
@@ -143,6 +155,10 @@
 		</header>
 
 		<div class="chat-container">
+                        <div id="markdown" class="markdown">
+
+                        </div>
+
 			<div id="chat-messages" class="chat-messages">
 				<div class="message assistant-message">
 					<p>

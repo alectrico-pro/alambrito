@@ -110,13 +110,12 @@ async function sendMessage() {
 			const lines = chunk.split("\n");
 			for (const line of lines) {
 				try {
-                                        console.log(`line ${line}`);
 					const jsonData = JSON.parse(line);
-                                        console.log( jsonData );
 					if (jsonData.response) {
 						// Append new content to existing text
 						responseText += jsonData.response;
                                                 console.log( responseText );
+
 						assistantMessageEl.querySelector("p").textContent = responseText;
 
 						// Scroll to bottom
@@ -159,4 +158,19 @@ function addMessageToChat(role, content) {
 
 	// Scroll to bottom
 	chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+
+      // Function to convert Markdown to HTML and display it
+function ToMarkdown() {
+            // 1. Get the Markdown source from the textarea
+            child = chatMessages.lastChild;
+
+            // 2. Use a JavaScript library to convert Markdown to HTML
+            // This example uses the Showdown library
+            const converter = new showdown.Converter();
+            const htmlOutput = converter.makeHtml( child) ;
+
+            // 3. Display the resulting HTML in the preview div
+            document.getElementById('markdown').innerHTML = htmlOutput;
 }
