@@ -77,7 +77,7 @@ async function alambrito(
                 const { messages = [] } = (await request.json()) as {
                         messages: ChatMessage[];
                 };
-                ultimo = messages[messages.length -1 ]);
+                ultimo = messages[messages.length -1 ];
                 console.log( ultimo);
                 // Add system prompt if not present
                 if (!messages.some((msg) => msg.role === "system")) {
