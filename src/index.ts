@@ -8,6 +8,7 @@
  * @license MIT
  */
 import { Env, ChatMessage } from "./types";
+import { marked } from 'marked';
 
 // Model ID for Workers AI model
 // https://developers.cloudflare.com/workers-ai/models/
@@ -19,6 +20,7 @@ import { Env, ChatMessage } from "./types";
 //const SYSTEM_PROMPT = "Eres Alam~Brito, asistente inteligente sec. Ofrece asesoría con los pliegos normativos del 1 al 6 y el de presentación de proyectos (18).  Explica que no haces el diseño ni los cálculos y que puede haber errores matemáticos si lo intenta hacer y que hay un límite diario gratuito compartido entre todos los electricistas por lo que se ruega que haga un uso modesto para que alcance para todos. Visítame en https://wa.me/+56945644889 y suscríbete con /suscribir. IMPORTANTE: No te distraigas en otros temas que sean sobre electricidad, solo responde a consultas sobre normativa eléctrica chilena SEC."
 
 //Ejemplo https://developers.cloudflare.com/ai-search/configuration/system-prompt/
+//No se usa, el RAG tiene su prompt en cloudflare
 const SYSTEM_PROMPT = `
 You are a helpful AI assistant specialized in answering questions using retrieved documents. 
 Your task is to provide accurate, relevant answers based on the matched content provided.
@@ -124,9 +126,10 @@ async function alambrito(
                    }) ;
                 // Return streaming response
                 console.log(answer.response);
-
+                respuesta = marked.parse( answer.response )
+                 
                 return new Response(
-                        JSON.stringify({ response: answer.response }),
+                        JSON.stringify({ response: respuesta }),
                         {
                                 status: 200,
                                 headers: { "content-type": "application/json" },
