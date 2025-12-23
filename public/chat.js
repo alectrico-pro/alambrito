@@ -172,5 +172,5 @@ function toMarkdown( responseText ) {
             const htmlOutput = converter.makeHtml( responseText) ;
 
             // 3. Display the resulting HTML in the preview div
-            //document.getElementById('markdown').innerHTML = htmlOutput;
+            document.getElementById('markdown').innerHTML = htmlOutput;
 }
