@@ -1672,7 +1672,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 216px;
     height: 254px;
     position: absolute;
-    background: url(../images/apple-shape-img.png) no-repeat;
+    background: url(../images/icon-cable-green.png) no-repeat;
 }
 
 .sub-banner-inner-box:before {
