@@ -285,6 +285,7 @@ body {
     margin-left: 3px;
 }
 
+/*
 .banner-inner-box:after {
     content: "";
     bottom: 0;
@@ -292,8 +293,20 @@ body {
     width: 216px;
     height: 254px;
     position: absolute;
+    background: url(../images/apple-shape-icon.png) no-repeat;
+}*/
+
+.banner-inner-box:after {
+    content: "";
+    bottom: 0;
+    right: -110px;
+    width: 16px;
+    height: 154px;
+    position: absolute;
     background: url(../images/logo_alectrico.png) no-repeat;
 }
+
+
 
 .banner-inner-box:before {
     content: "";
