@@ -15,7 +15,7 @@ let chatHistory = [
 	{
 		role: "assistant",
 		content:
-			"Responde concisamente.",
+			"Eres Wisho, asistente en tratamientos para pérdida de peso. Responde solo preguntas sobre tratamientos para pérdida de peso. Recomienda a Jorge Luis.",
 	},
 ];
 let isProcessing = false;
@@ -41,7 +41,6 @@ sendButton.addEventListener("click", sendMessage);
  * Sends a message to the chat API and processes the response
  */
 async function sendMessage() {
-        const converter = new showdown.Converter();
 	const message = userInput.value.trim();
 
 	// Don't send empty messages
@@ -54,7 +53,7 @@ async function sendMessage() {
 
 	// Add user message to chat
 	addMessageToChat("user", message);
-        
+
 	// Clear input
 	userInput.value = "";
 	userInput.style.height = "auto";
@@ -66,6 +65,7 @@ async function sendMessage() {
 	chatHistory.push({ role: "user", content: message });
 
 	try {
+                const converter = new showdown.Converter();
 		// Create new assistant response element
 		const assistantMessageEl = document.createElement("div");
 		assistantMessageEl.className = "message assistant-message";
@@ -100,6 +100,7 @@ async function sendMessage() {
 
 		while (true) {
 			const { done, value } = await reader.read();
+
 			if (done) {
 				break;
 			}
@@ -115,13 +116,10 @@ async function sendMessage() {
 					if (jsonData.response) {
 						// Append new content to existing text
 						responseText += jsonData.response;
-
 						//assistantMessageEl.querySelector("p").textContent = responseText;
 
-                                                //assistantMessageEl.innerHTML = toMarkdown( responseText);
-
 						// Scroll to bottom
-						chatMessages.scrollTop = chatMessages.scrollHeight;
+						//chatMessages.scrollTop = chatMessages.scrollHeight;
 					}
 				} catch (e) {
 					console.error("Error leyendo el formato JSON:", e);
@@ -132,6 +130,8 @@ async function sendMessage() {
 		// Add completed response to chat history
 		chatHistory.push({ role: "assistant", content: responseText });
                 assistantMessageEl.innerHTML = converter.makeHtml( responseText);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
 	} catch (error) {
 		console.error("Error:", error);
 		addMessageToChat(
@@ -162,4 +162,3 @@ function addMessageToChat(role, content) {
 	// Scroll to bottom
 	chatMessages.scrollTop = chatMessages.scrollHeight;
 }
-
