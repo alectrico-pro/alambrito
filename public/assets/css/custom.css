@@ -299,9 +299,9 @@ body {
 .banner-inner-box:after {
     content: "";
     bottom: 0;
-    right: -110px;
-    width: 16px;
-    height: 154px;
+    right: -210px;
+    width: 26px;
+    height: 254px;
     position: absolute;
     background: url(../images/logo_alectrico.png) no-repeat;
 }
