@@ -299,7 +299,7 @@ body {
 .banner-inner-box:after {
     content: "";
     bottom: 0;
-    right: -210px;
+    right: -10px;
     width: 26px;
     height: 254px;
     position: absolute;
