@@ -292,7 +292,7 @@ body {
     width: 216px;
     height: 254px;
     position: absolute;
-    background: url(../images/icon-cable-green.png) no-repeat;
+    background: url(../images/ticked.png) no-repeat;
 }
 
 .banner-inner-box:before {
